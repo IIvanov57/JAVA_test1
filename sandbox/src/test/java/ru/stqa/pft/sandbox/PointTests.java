@@ -1,18 +1,23 @@
 package ru.stqa.pft.sandbox;
 
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Test
 public class PointTests {
-  @Test
-  public void testPoint(){
-    Point d = new Point(4,8,2,4);
-    Assert.assertEquals(d.distance(), 4.47213595499958);
+  //проверяем, что считает верно
+  public void testDistance() {
+    Point p1 = new Point(2, 5);
+    Point p2 = new Point(4, 8);
+    Assert.assertEquals(p1.distance(p2), 3.605551275463989);
   }
-  @Test
-  public void testPoint1(){
-    Point d = new Point(10,17,15,27);
-    Assert.assertEquals(d.distance(), 13.892443989449804);
 
+  @Test
+  //проверям еще раз подставив другие значения
+  public void testDistance1() {
+    Point p1 = new Point(7, 11);
+    Point p2 = new Point(18, 25);
+    Assert.assertEquals(p1.distance(p2), 17.804493814764857);
   }
 }
