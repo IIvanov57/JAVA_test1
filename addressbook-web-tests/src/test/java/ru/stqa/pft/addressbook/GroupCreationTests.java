@@ -18,9 +18,7 @@ public class GroupCreationTests {
 
   private void login(String username, String password) {
     wd.get("http://localhost/addressbook/group.php");
-    wd.findElement(By.name("user")).clear();
     wd.findElement(By.name("user")).sendKeys(username);
-    wd.findElement(By.name("pass")).clear();
     wd.findElement(By.name("pass")).sendKeys(password);
     wd.findElement(By.xpath("//input[@value='Login']")).click();
   }
@@ -44,14 +42,8 @@ public class GroupCreationTests {
   }
 
   private void fillGroupForm(GroupData groupData) {
-    wd.findElement(By.name("group_name")).click();
-    wd.findElement(By.name("group_name")).clear();
     wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
-    wd.findElement(By.name("group_header")).click();
-    wd.findElement(By.name("group_header")).clear();
     wd.findElement(By.name("group_header")).sendKeys(groupData.getHeder());
-    wd.findElement(By.name("group_footer")).click();
-    wd.findElement(By.name("group_footer")).clear();
     wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
   }
 
