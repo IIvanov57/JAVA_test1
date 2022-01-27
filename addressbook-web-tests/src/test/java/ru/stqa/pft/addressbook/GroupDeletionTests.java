@@ -1,23 +1,30 @@
 package ru.stqa.pft.addressbook;
 
-import java.util.concurrent.TimeUnit;
-import org.testng.annotations.*;
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-public class GroupDeletionTests{
-  private WebDriver wd;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.*;
+
+import java.util.concurrent.TimeUnit;
+
+
+public class GroupDeletionTests extends TestBase{
+  WebDriver wd;
 
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
     System.setProperty("webdriver.chrome.driver", "C:\\JAVA_test1\\addressbook-web-tests\\chromedriver.exe");
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
   }
 
   @Test
-  public void testGroupDeletion() throws Exception {
-    wd.get("http://localhost/addressbook/group.php");
+  public void testGroupDeletionTests() throws Exception {
+    wd.get("http://localhost/addressbook/");
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
     wd.findElement(By.name("user")).sendKeys("admin");
@@ -28,6 +35,8 @@ public class GroupDeletionTests{
     wd.findElement(By.name("selected[]")).click();
     wd.findElement(By.name("delete")).click();
     wd.findElement(By.linkText("group page")).click();
+    wd.findElement(By.linkText("Logout")).click();
+
   }
 
   @AfterMethod(alwaysRun = true)
