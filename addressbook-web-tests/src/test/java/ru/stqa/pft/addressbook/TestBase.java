@@ -88,4 +88,30 @@ public class TestBase {
   protected void selectGroup() {
     wd.findElement(By.name("selected[]")).click();
   }
+
+  protected void creatUser() {
+    wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+  }
+
+  protected void fillUser(UserData userData) {
+    wd.findElement(By.name("firstname")).click();
+    wd.findElement(By.name("firstname")).clear();
+    wd.findElement(By.name("firstname")).sendKeys(userData.getFirstname());
+    wd.findElement(By.name("lastname")).click();
+    wd.findElement(By.name("lastname")).clear();
+    wd.findElement(By.name("lastname")).sendKeys(userData.getLastname());
+    wd.findElement(By.name("company")).click();
+    wd.findElement(By.name("company")).clear();
+    wd.findElement(By.name("company")).sendKeys(userData.getCompany());
+    wd.findElement(By.name("mobile")).click();
+    wd.findElement(By.name("mobile")).clear();
+    wd.findElement(By.name("mobile")).sendKeys(userData.getPhone());
+    wd.findElement(By.name("email")).click();
+    wd.findElement(By.name("email")).clear();
+    wd.findElement(By.name("email")).sendKeys(userData.getEmail());
+  }
+
+  protected void addNewUser() {
+    wd.findElement(By.linkText("add new")).click();
+  }
 }
