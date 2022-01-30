@@ -10,8 +10,7 @@ import ru.stqa.pft.addressbook.model.UserData;
 
 import java.util.concurrent.TimeUnit;
 
-public class ApplicationManager {
-  WebDriver wd;
+public class ApplicationManager extends GroupHelper {
 
   public void init() {
     System.setProperty("webdriver.chrome.driver", "C:\\JAVA_test1\\addressbook-web-tests\\chromedriver.exe");
@@ -29,32 +28,8 @@ public class ApplicationManager {
     wd.findElement(By.xpath("//input[@value='Login']")).click();
   }
 
-  public void returnGroupPage() {
-    wd.findElement(By.linkText("groups")).click();
-  }
-
-  public void submitGroupCreation() {
-    wd.findElement(By.name("submit")).click();
-  }
-
-  public void fillGroupForm(GroupData groupData) {
-    wd.findElement(By.name("group_name")).click();
-    wd.findElement(By.name("group_name")).clear();
-    wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
-    wd.findElement(By.name("group_header")).click();
-    wd.findElement(By.name("group_header")).clear();
-    wd.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
-    wd.findElement(By.name("group_footer")).click();
-    wd.findElement(By.name("group_footer")).clear();
-    wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
-  }
-
-  public void initGroupCreation() {
-    wd.findElement(By.name("new")).click();
-  }
-
   public void gotoGroupPage() {
-    wd.findElement(By.linkText("groups")).click();
+    returnGroupPage();
   }
 
   public void stop() {
@@ -77,14 +52,6 @@ public class ApplicationManager {
     } catch (NoAlertPresentException e) {
       return false;
     }
-  }
-
-  public void deleteSelectedGroups() {
-    wd.findElement(By.name("delete")).click();
-  }
-
-  public void selectGroup() {
-    wd.findElement(By.name("selected[]")).click();
   }
 
   public void creatUser() {
