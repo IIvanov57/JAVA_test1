@@ -4,10 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.UserData;
 
-public class UserHelper {
+public class ContactHelper {
   private WebDriver wd;
 
-  public UserHelper(WebDriver wd) {
+  public ContactHelper(WebDriver wd) {
 
     this.wd = wd;
   }
