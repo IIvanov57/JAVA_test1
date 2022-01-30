@@ -27,8 +27,8 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void selectUser() {
-    click(By.id("1"));
+  public void selectUser(String user_id) {
+    click(By.id(user_id));
   }
 
   public void initUserModification() {
