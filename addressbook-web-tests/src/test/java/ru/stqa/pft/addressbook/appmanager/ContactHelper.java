@@ -28,7 +28,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectUser() {
-    click(By.id("15"));
+    click(By.id("1"));
   }
 
   public void initUserModification() {
@@ -41,5 +41,10 @@ public class ContactHelper extends HelperBase {
 
   public void gotoHomePage() {
     click(By.linkText("home page"));
+  }
+
+  public void deletedUser() {
+    click(By.xpath("//input[@value='Delete']"));
+    wd.switchTo().alert().accept();
   }
 }
