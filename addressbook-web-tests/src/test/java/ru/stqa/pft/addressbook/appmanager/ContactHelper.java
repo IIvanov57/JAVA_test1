@@ -26,4 +26,20 @@ public class ContactHelper extends HelperBase {
   public void addNewUser() {
     click(By.linkText("add new"));
   }
+
+  public void selectUser() {
+    click(By.id("15"));
+  }
+
+  public void initUserModification() {
+    click(By.xpath("//img[@alt='Edit']"));
+  }
+
+  public void submitUserModification() {
+    click(By.name("update"));
+  }
+
+  public void gotoHomePage() {
+    click(By.linkText("home page"));
+  }
 }
