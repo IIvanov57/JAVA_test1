@@ -11,7 +11,7 @@ public class ContactHelper extends HelperBase {
     super(wd);
   }
 
-  public void creatUser() {
+  public void submitUserCreation() {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
@@ -23,7 +23,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"),userData.getEmail() );
   }
 
-  public void addNewUser() {
+  public void initUserCreation() {
     click(By.linkText("add new"));
   }
 
