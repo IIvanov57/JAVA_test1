@@ -6,7 +6,7 @@ import ru.stqa.pft.addressbook.model.UserData;
 public class UserModificationTests extends TestBase {
   @Test
   public void testUserModification() {
-    app.getUserHelper().selectUser("1");
+    app.getUserHelper().selectUser();
     app.getUserHelper().initUserModification();
     app.getUserHelper().fillUser(new UserData("Ivan111", "Ivanov", "OOO", "89997775567", "exampel@ya.ru"));
     app.getUserHelper().submitUserModification();
