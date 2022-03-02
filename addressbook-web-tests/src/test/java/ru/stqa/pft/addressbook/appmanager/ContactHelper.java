@@ -35,7 +35,7 @@ public class ContactHelper extends HelperBase {
   public void initUserCreation() {
     click(By.linkText("add new"));
   }
-
+//тест
   public void selectUser() {
     click(By.xpath("//td/input"));
   }
