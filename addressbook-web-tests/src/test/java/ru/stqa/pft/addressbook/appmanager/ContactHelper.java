@@ -37,7 +37,7 @@ public class ContactHelper extends HelperBase {
   }
 //тест
   public void selectUser() {
-    click(By.xpath("//td/input"));
+    click(By.name("selected[]"));
   }
 
   public void initUserModification() {
