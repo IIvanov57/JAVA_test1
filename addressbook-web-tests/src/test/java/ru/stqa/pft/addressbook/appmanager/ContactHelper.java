@@ -24,9 +24,9 @@ public class ContactHelper extends HelperBase {
     type(By.name("company"),userData.getCompany() );
     type(By.name("mobile"),userData.getPhone() );
     type(By.name("email"),userData.getEmail() );
-
+//поиск группы по индексу, что бы отвязаться от имени
     if(creation){
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(userData.getGroup());
+      new Select(wd.findElement(By.name("new_group"))).selectByIndex(1);
     } else {
       Assert.assertFalse(isElemetPresent(By.name("new_group")));
     }
@@ -66,5 +66,16 @@ public class ContactHelper extends HelperBase {
 
   public boolean isThereAUser() {
     return isElemetPresent(By.name("selected[]"));
+  }
+//проверка наличия группы, если не удается найти группу, то создать
+ public boolean checkGroup() {
+   return isElemetPresent(By.name("selected[]"));
+}
+//создание группы
+  public void createGroupForUsers() {
+    wd.findElement(By.linkText("groups")).click();
+    wd.findElement(By.name("new")).click();
+    wd.findElement(By.name("submit")).click();
+    wd.findElement(By.linkText("group page")).click();
   }
 }
