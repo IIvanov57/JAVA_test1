@@ -8,7 +8,7 @@ public class UserDeletionTests extends TestBase {
   public void testUserDeletion() {
     //если нет контакта для удаления, то создать его
     if (!app.getUserHelper().isThereAUser()) {
-      app.getUserHelper().createUser(new UserData("Ivan", "Ivanov", "OOO", "89997775567", "exampel@ya.ru", "test1"));
+      app.getUserHelper().createUser(new UserData("Ivan", "Ivanov", "OOO", "89997775567", "exampel@ya.ru"));
     }
     app.getUserHelper().selectUser();
     app.getUserHelper().deletedUser();
