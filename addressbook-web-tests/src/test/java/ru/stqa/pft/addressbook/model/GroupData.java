@@ -6,11 +6,20 @@ public class GroupData {
   private final String header;
   private final String footer;
   private final String name;
+  private final String id;
 
-  public GroupData(String header, String footer, String name) {
+  public GroupData(String name, String header, String footer) {
     this.header = header;
     this.footer = footer;
     this.name = name;
+    this.id = null;
+  }
+
+  public GroupData(String id, String name, String header, String footer) {
+    this.header = header;
+    this.footer = footer;
+    this.name = name;
+    this.id = id;
   }
 
   public String getHeader() {
@@ -21,15 +30,12 @@ public class GroupData {
     return footer;
   }
 
-  public String getName() {
-    return name;
+  public String getId() {
+    return id;
   }
 
-  @Override
-  public String toString() {
-    return "GroupData{" +
-            "name='" + name + '\'' +
-            '}';
+  public String getName() {
+    return name;
   }
 
   @Override
@@ -37,11 +43,20 @@ public class GroupData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     GroupData groupData = (GroupData) o;
-    return Objects.equals(name, groupData.name);
+    return Objects.equals(header, groupData.header) && Objects.equals(id, groupData.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name);
+    return Objects.hash(header, id);
   }
+
+  @Override
+  public String toString() {
+    return "GroupData{" +
+            "header='" + header + '\'' +
+            ", id='" + id + '\'' +
+            '}';
+  }
+
 }
