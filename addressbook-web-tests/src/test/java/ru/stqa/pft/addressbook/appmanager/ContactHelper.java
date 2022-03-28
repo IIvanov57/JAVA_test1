@@ -26,9 +26,13 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"),userData.getEmail() );
 //поиск группы по индексу, что бы отвязаться от имени
     if(creation){
+      if (checkGroup())
       new Select(wd.findElement(By.name("new_group"))).selectByIndex(1);
+     else if(! checkGroup()) {
+      new Select(wd.findElement(By.name("new_group"))).selectByIndex(0);
     } else {
-      Assert.assertFalse(isElemetPresent(By.name("new_group")));
+        Assert.assertFalse(isElemetPresent(By.name("new_group")));
+      }
     }
   }
 
