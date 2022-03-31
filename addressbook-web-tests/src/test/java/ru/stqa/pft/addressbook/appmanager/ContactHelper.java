@@ -1,7 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -20,26 +19,29 @@ public class ContactHelper extends HelperBase {
 
   public void fillUser(UserData userData, boolean creation) {
     type(By.name("firstname"), userData.getFirstname());
-    type(By.name("lastname"),userData.getLastname());
-    type(By.name("company"),userData.getCompany() );
-    type(By.name("mobile"),userData.getPhone() );
-    type(By.name("email"),userData.getEmail() );
+    type(By.name("lastname"), userData.getLastname());
+    type(By.name("company"), userData.getCompany());
+    type(By.name("mobile"), userData.getPhone());
+    type(By.name("email"), userData.getEmail());
 //поиск группы по индексу, что бы отвязаться от имени
-    if(creation){
-      if (checkGroup())
-      new Select(wd.findElement(By.name("new_group"))).selectByIndex(1);
-     else if(! checkGroup()) {
-      new Select(wd.findElement(By.name("new_group"))).selectByIndex(0);
-    } else {
-        Assert.assertFalse(isElemetPresent(By.name("new_group")));
+    if (creation) {
+      if (userData.getGroup() != null) {
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(userData.getGroup());
+      } else {
+        new Select(wd.findElement(By.name("new_group"))).selectByIndex(0);
       }
+    } else {
+      Assert.assertFalse(isElemetPresent(By.name("new_group")));
     }
+
   }
+
 
   public void initUserCreation() {
     click(By.linkText("add new"));
   }
-//тест
+
+  //тест
   public void selectUser() {
     click(By.name("selected[]"));
   }
@@ -71,11 +73,13 @@ public class ContactHelper extends HelperBase {
   public boolean isThereAUser() {
     return isElemetPresent(By.name("selected[]"));
   }
-//проверка наличия группы, если не удается найти группу, то создать
- public boolean checkGroup() {
-   return isElemetPresent(By.name("selected[]"));
-}
-//создание группы
+
+  //проверка наличия группы, если не удается найти группу, то создать
+  public boolean checkGroup() {
+    return isElemetPresent(By.name("selected[]"));
+  }
+
+  //создание группы
   public void createGroupForUsers() {
     wd.findElement(By.linkText("groups")).click();
     wd.findElement(By.name("new")).click();

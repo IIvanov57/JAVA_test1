@@ -14,7 +14,7 @@ public class UserCreationTests extends TestBase{
       app.getUserHelper().createGroupForUsers();
     }
     app.getUserHelper().initUserCreation();
-    app.getUserHelper().fillUser(new UserData("Ivan", "Ivanov", "OOO", "89997775567", "exampel@ya.ru"),true);
+    app.getUserHelper().fillUser(new UserData("Ivan", "Ivanov", "OOO", "89997775567", "exampel@ya.ru",null),true);
     app.getUserHelper().submitUserCreation();
   }
 
